@@ -1,5 +1,5 @@
 import os
-import boto3
+import ec2
 import subprocess as sp
 
 def chng2num(x,y,z):
@@ -15,10 +15,10 @@ def aws_ec2():
         aws = input("""
 -------Amazon Web Services--------
 
-1. Start Docker Service
-2. Stop Docker Service
-3. Restart Docker Service
-4. Show Service Status
+1. Create a key pair
+2. Create security group
+3. Provision the instance
+4. Show instances
 5. Go Back
 
 Enter your Choice
@@ -28,7 +28,7 @@ Enter your Choice
 [aws]$ """)
         aws = chng2num(aws,1,6)
         if aws == 1:
-            os.system("systemctl start docker")
+            ec2.create_keypair(input("Enter the name of the key"))
         elif aws == 2:
             os.system("systemctl stop docker")
         elif aws == 3:
