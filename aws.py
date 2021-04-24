@@ -1,4 +1,5 @@
 import os
+import boto3
 import subprocess as sp
 
 def chng2num(x,y,z):
@@ -38,35 +39,29 @@ Enter your Choice
         else:
             return
 
-def docker_service():
+def aws_configure():
     while True:
         os.system("clear")
-        docker_svc = input("""
---------------DOCKER--------------
+        aws_svc = input("""
+-------Amazon Web Services--------
 
-1. Start Docker Service
-2. Stop Docker Service
-3. Restart Docker Service
-4. Show Service Status
-5. Go Back
+1. Install aws-cli
+2. Configure AWS
+3. Go Back
 
 Enter your Choice
 
 ----------------------------------
 
 [aws]$ """)
-        docker_svc = chng2num(docker_svc,1,6)
-        if docker_svc == 1:
-            os.system("systemctl start docker")
-        elif docker_svc == 2:
-            os.system("systemctl stop docker")
-        elif docker_svc == 3:
-            os.system("systemctl restart docker")
-        elif docker_svc == 4:
-            print(sp.getoutput("systemctl status docker | grep Active"))
-            os.system("sleep 2")
-        else:
-            return
+        aws_svc = chng2num(aws_svc,1,4)
+        if aws_svc == 1:
+            os.system("pip3 install awscli boto3")
+        elif aws_svc == 2:
+            os.system("aws configure")
+        elif aws_svc == 3:
+            break
+    return
 
 def docker_login():
     pass
@@ -93,7 +88,7 @@ Enter your Choice
             if x == 1:
                 aws_configure()
             elif x == 2:
-                docker_service()
+                aws_ec2()
             elif x == 3:
                 docker_login()
             elif x == 4:
