@@ -31,5 +31,5 @@ while(True):
         hd.HadoopStart()
     if choice==5:
         lvm.main_loop()
-    #if choice == 6:
-       # linux
+    if choice == 6:
+        linux
