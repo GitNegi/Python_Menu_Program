@@ -57,14 +57,14 @@ Enter your Choice
 [docker]$ """)
         docker_img = chng2num(docker_img,1,6)
         if docker_img == 1:
-            os.system("docker pull {}:{}".format(input("Image Name: "),input("Image Tag: ")))
+            os.system("docker pull '{}:{}'".format(input("Image Name: "),input("Image Tag: ")))
         elif docker_img == 2:
-            os.system("docker commit {}".format(input("Container: ")))
+            os.system("docker commit '{}'".format(input("Container: ")))
         elif docker_img == 3:
             print(sp.getoutput("docker images"))
             os.system("sleep 2")
         elif docker_img == 4:
-            os.system("docker push {}:{}").format(input("Image Name: "),input("Image Tag: ")))
+            os.system("docker push '{}:{}'".format(input("Image Name: "),input("Image Tag: ")))
         else:
             break
 
@@ -88,7 +88,7 @@ Enter your Choice
 [docker]$ """)
         docker_ctnr = chng2num(docker_ctnr,1,6)
         if docker_ctnr == 1:
-            os.system("docker run -dit --name {}  {}:{}".format(input("Container Name: "),input("Image Name: "),input("Image Tag: ")))
+            os.system("docker run -dit --name '{}' '{}:{}'".format(input("Container Name: "),input("Image Name: "),input("Image Tag: ")))
         elif docker_ctnr == 2:
             print(sp.getoutput("docker ps"))
             os.system("clear")
@@ -96,9 +96,9 @@ Enter your Choice
             print(sp.getoutput("docker ps -a"))
             os.system("sleep 2")
         elif docker_ctnr == 4:
-            os.system("docker start {}").format(input("Container Name: ")))
+            os.system("docker start '{}'".format(input("Container Name: ")))
         elif docker_ctnr == 5:
-            os.system("docker stop {}").format(input("Container Name: ")))
+            os.system("docker stop '{}'".format(input("Container Name: ")))
         else:
             break
 
