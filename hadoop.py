@@ -73,32 +73,31 @@ def HadoopStart():
                                     </property>
                                     </configuration>
 
-                                    """.format(input("Enter Folder Name With location ")))
+                                    """.format(input("Enter Folder Name With location "))))
 
                 if MNchoice == 2:
                     fs = open("/etc/hadoop/core-site.xml",'w+')
                     print(fs.write(
-                        """
-                        <?xml version="1.0"?>
-                        <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+                                    """
+                                    <?xml version="1.0"?>
+                                    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
-                        <!-- Put site-specific property overrides in this file. -->
+                                    <!-- Put site-specific property overrides in this file. -->
 
-                        <configuration>
-                        <property>
-                        <name>fs.default.name</name>
-                        <value>hdfs://0.0.0.0:{}</value>
-                        </property>
-                        </configuration>
+                                    <configuration>
+                                    <property>
+                                    <name>fs.default.name</name>
+                                    <value>hdfs://0.0.0.0:{}</value>
+                                    </property>
+                                    </configuration>
 
-                        """.format(input(" Enter the Port No :-> "))
-                        )
+                                    """.format(input(" Enter the Port No :-> "))))
 
                 if MNchoice == 3:
-                        os.system("hadoop namenode -format")
+                    os.system("hadoop namenode -format")
 
-                if MNchoice ==4:
-                        os.system("hadoop-daemon.sh start namenode")
+                if MNchoice == 4:
+                    os.system("hadoop-daemon.sh start namenode")
 
                 if MNchoice == 5:
                     os.system("jps")
@@ -122,15 +121,15 @@ def HadoopStart():
 
                         """
                      )
-                MNchoice = int(input("Enter Choice :-> "))
+                dNchoice = int(input("Enter Choice :-> "))
 
-                if MNchoice == 0:
+                if dNchoice == 0:
                     break
 
-                if MNchoice == 1:
+                if dNchoice == 1:
                     x = input(" Enter Folder Name with location")
                     os.system("mkdir x")
-                    fs = open("/etc/hadoop/hdfs-site.xml",'w+')
+                    fs = open("hdfs-site.xml",'w+')
                     print(fs.write(
                                     """
                                     <?xml version="1.0"?>
@@ -145,9 +144,9 @@ def HadoopStart():
                                     </property>
                                     </configuration>
 
-                                    """.format(x))
+                                    """.format(x)))
 
-                if MNchoice == 2:
+                if dNchoice == 2:
                     masterip = input("Enter NameNode IP :-> ")
                     masterport = input("Enter Hadoop Service Port NO :-> ")
                     fs = open("/etc/hadoop/core-site.xml",'w+')
@@ -165,14 +164,13 @@ def HadoopStart():
                         </property>
                         </configuration>
 
-                        """.format(masterip,masterport))
-                        )
+                        """.format(masterip,masterport)))
 
 
 
-                if MNchoice ==3:
-                        os.system("hadoop-daemon.sh start datanode")
+                if dNchoice ==3:
+                    os.system("hadoop-daemon.sh start datanode")
 
-                if MNchoice == 4:
+                if dNchoice == 4:
                     os.system("sleep 5")
                     os.system("jps")
