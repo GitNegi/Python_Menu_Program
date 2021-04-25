@@ -15,9 +15,8 @@ while(True):
 \t\t\tPress 1: DOCKER
 \t\t\tPress 2: HADOOP
 \t\t\tPress 3: AWS
-\t\t\tPress 4: ANSIBLE
-\t\t\tPress 5: LVM
-\t\t\tPress 6: LINUX
+\t\t\tPress 4: LVM
+\t\t\tPress 5: LINUX
 
 """
 )
