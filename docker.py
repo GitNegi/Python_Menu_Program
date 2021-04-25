@@ -86,7 +86,7 @@ Enter your Choice
 ----------------------------------
 
 [docker]$ """)
-        docker_ctnr = chng2num(docker_ctnr,1,6)
+        docker_ctnr = chng2num(docker_ctnr,1,7)
         if docker_ctnr == 1:
             os.system("docker run -dit --name '{}' '{}:{}'".format(input("Container Name: "),input("Image Name: "),input("Image Tag: ")))
         elif docker_ctnr == 2:
@@ -99,10 +99,11 @@ Enter your Choice
             os.system("docker start '{}'".format(input("Container Name: ")))
         elif docker_ctnr == 5:
             os.system("docker stop '{}'".format(input("Container Name: ")))
-        else:
+        elif docker_ctnr == 6:
             break
 
 def main_menu():
+    while True:
         os.system("clear")
         x = input("""
 --------------DOCKER--------------
@@ -120,16 +121,15 @@ Enter your Choice
 
 [docker]$ """)
         x = chng2num(x,1,7)
-        while True:
-            if x == 1:
-                os.system("sudo yum install docker -y")
-            elif x == 2:
-                docker_service()
-            elif x == 3:
-                os.system("docker login")
-            elif x == 4:
-                manage_images()
-            elif x == 5:
-                manage_containers()
-            else:
-                break
+        if x == 1:
+            os.system("sudo yum install docker -y")
+        elif x == 2:
+            docker_service()
+        elif x == 3:
+            os.system("docker login")
+        elif x == 4:
+            manage_images()
+        elif x == 5:
+            manage_containers()
+        else:
+            break
