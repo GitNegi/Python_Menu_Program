@@ -174,3 +174,5 @@ def HadoopStart():
                 if dNchoice == 4:
                     os.system("sleep 5")
                     os.system("jps")
+
+HadoopStart()
