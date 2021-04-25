@@ -1,4 +1,4 @@
-import os, docker, lvm
+import os, docker, lvm, hadoop
 
 os.system("tput setaf 3")
 
@@ -27,5 +27,7 @@ while(True):
          break
     if choice==1:
         docker.main_menu()
+    if choice ==2:
+        hd.HadoopStart()
     if choice==5:
         lvm.main_loop()
