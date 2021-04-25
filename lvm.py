@@ -45,7 +45,7 @@ Type the desired number:""")
             os.system("fdisk -l /dev/{}".format(input("\nEnter name of the disk: ")))
             lvm_pause()
         elif x == "5":
-            main_loop()
+            break
         else:
             print("Enter a valid number")
             lvm_pause()

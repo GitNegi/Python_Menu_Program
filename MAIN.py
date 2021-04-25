@@ -1,4 +1,4 @@
-import aws
+#from aws import aws
 import os, docker, lvm, hadoop as hd, linux
 
 os.system("tput setaf 3")
@@ -30,7 +30,7 @@ while(True):
     if choice == 2:
         hd.HadoopStart()
     if choice ==3:
-        aws.main_menu()
+        aws.aws.main_menu()
     if choice == 4:
         lvm.main_loop()
     if choice == 5:
