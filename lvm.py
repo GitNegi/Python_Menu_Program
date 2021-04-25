@@ -139,4 +139,3 @@ def main_loop():
         else:
             print("Enter a valid number")
             lvm_pause()
-main_loop()
