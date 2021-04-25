@@ -9,7 +9,6 @@ while(True):
     print(
 """
 
-
 \t\tPress 0: Exit
 \t\tPress 1: To HardDisks Details
 \t\tPress 2: Create Physical Volume
