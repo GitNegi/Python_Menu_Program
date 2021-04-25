@@ -19,23 +19,28 @@ def aws_ec2():
 2. Create security group
 3. Provision the instance
 4. Show instances
-5. Go Back
+5. Get public IP
+6. Create a Volume
+7. Go Back
 
 Enter your Choice
 
 ----------------------------------
 
 [aws]$ """)
-        aws = chng2num(aws,1,6)
+        aws = chng2num(aws,1,8)
         if aws == 1:
-            ec2.create_keypair(input("Enter the name of the key"))
+            ec2.create_keypair(input("Enter the name of the key: "))
         elif aws == 2:
-            os.system("systemctl stop docker")
+            ec2.create_sg(input("Enter the name of the security group: "))
         elif aws == 3:
-            os.system("systemctl restart docker")
+            ec2.create_instance()
         elif aws == 4:
-            print(sp.getoutput("systemctl status docker | grep Active"))
-            os.system("sleep 2")
+            ec2.show_instances()
+        elif aws == 5:
+            ec2.ebs_volume(input("Enter the size in GB: "))
+        elif aws == 6:
+            ec2.get_public_ip(input("Enter the instance ID: "))
         else:
             break
 
@@ -63,47 +68,16 @@ Enter your Choice
             break
     return
 
-def docker_service():
-    while True:
-        os.system("clear")
-        docker_svc = input("""
---------------DOCKER--------------
-
-1. Start Docker Service
-2. Stop Docker Service
-3. Restart Docker Service
-4. Show Service Status
-5. Go Back
-
-Enter your Choice
-
-----------------------------------
-
-[aws]$ """)
-        docker_svc = chng2num(docker_svc,1,6)
-        if docker_svc == 1:
-            os.system("systemctl start docker")
-        elif docker_svc == 2:
-            os.system("systemctl stop docker")
-        elif docker_svc == 3:
-            os.system("systemctl restart docker")
-        elif docker_svc == 4:
-            print(sp.getoutput("systemctl status docker | grep Active"))
-            os.system("sleep 2")
-        else:
-            return
-
-def docker_login():
-    pass
 
 def main_menu():
+    while True:
         os.system("clear")
         x = input("""
 -------Amazon Web Services--------
 
 1. Configure AWS
 2. Manage ec2 services
-3. Login to Docker
+3. Upload to s3
 4. Manage Images
 5. Manage Containers
 6. Go Back
@@ -114,18 +88,17 @@ Enter your Choice
 
 [aws]$ """)
         x = chng2num(x,1,7)
-        while True:
-            if x == 1:
-                aws_configure()
-            elif x == 2:
-                aws_ec2()
-            elif x == 3:
-                docker_login()
-            elif x == 4:
-                sp.getoutput("systemctl restart docker")
-            elif x == 5:
-                sp.getoutput("systemctl restart docker")
-            else:
-                return
+        if x == 1:
+            aws_configure()
+        elif x == 2:
+            aws_ec2()
+        elif x == 3:
+            docker_login()
+        elif x == 4:
+            sp.getoutput("systemctl restart docker")
+        elif x == 5:
+            sp.getoutput("systemctl restart docker")
+        else:
+            return
 
 main_menu()

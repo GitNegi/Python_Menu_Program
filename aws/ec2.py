@@ -33,3 +33,11 @@ def ebs_volume(x):
     os.system("aws ec2 create-volume --availability-zone ap-south-1 --size {}",format(int(x)))
 
     print("Volume of size", x, "created successfully.")
+
+def get_public_ip(instance_id):
+    ec2_client = boto3.client("ec2", region_name="us-west-2")
+    reservations = ec2_client.describe_instances(InstanceIds=[instance_id]).get("Reservations")
+
+    for reservation in reservations:
+        for instance in reservation['Instances']:
+            print(instance.get("PublicIpAddress"))
