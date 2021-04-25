@@ -52,6 +52,9 @@ def ebs_volume(x):
 
     print("Volume of size", x, "created successfully.")
 
+def attach_volume(volume, instance, device):
+    os.system("aws ec2 attach-volume --volume-id {} --instance-id {} --device {}")
+
 def get_public_ip(instance_id):
     ec2_client = boto3.client("ec2", region_name="us-west-2")
     reservations = ec2_client.describe_instances(InstanceIds=[instance_id]).get("Reservations")
@@ -59,3 +62,13 @@ def get_public_ip(instance_id):
     for reservation in reservations:
         for instance in reservation['Instances']:
             print(instance.get("PublicIpAddress"))
+
+def stop_instance(instance_id):
+    ec2_client = boto3.client("ec2", region_name="us-west-2")
+    response = ec2_client.stop_instances(InstanceIds=[instance_id])
+    print(response)
+
+def terminate_instance(instance_id):
+    ec2_client = boto3.client("ec2", region_name="us-west-2")
+    response = ec2_client.terminate_instances(InstanceIds=[instance_id])
+    print(response)

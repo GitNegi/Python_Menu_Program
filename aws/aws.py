@@ -19,16 +19,19 @@ def aws_ec2():
 2. Create security group
 3. Provision the instance
 4. Show running instances
-5. Get public IP
-6. Create a Volume
-7. Go Back
+5. Stop instances
+6. Terminate instance
+7. Get public IP
+8. Create a Volume
+9. Attach volume
+10. Go Back
 
 Enter your Choice
 
 ----------------------------------
 
 [aws]$ """)
-        aws = chng2num(aws,1,8)
+        aws = chng2num(aws,1,11)
         if aws == 1:
             ec2.create_keypair(input("Enter the name of the key: "))
         elif aws == 2:
@@ -38,9 +41,15 @@ Enter your Choice
         elif aws == 4:
             ec2.show_instances()
         elif aws == 5:
-            ec2.ebs_volume(input("Enter the size in GB: "))
+            ec2.stop_instance(input("Enter the instance ID: "))
         elif aws == 6:
+            ec2.terminate_instance(input("Enter the instance ID: "))
+        elif aws == 7:
             ec2.get_public_ip(input("Enter the instance ID: "))
+        elif aws == 8:
+            ec2.ebs_volume(input("Enter the size in GB: "))
+        elif aws == 8:
+            ec2.ebs_volume(input("Volume ID: "), input("Instance ID: "), input("Device: /dev/"))
         else:
             break
 
