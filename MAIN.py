@@ -1,12 +1,13 @@
 import os, docker
 
 os.system("tput setaf 3")
-print("\t\t------->LVM AUTOMATION<------")
+print("\t\t------->Technologies Integration<------")
 os.system("tput setaf 7")
 print("\n")
 
 
 while(True):
+    os.system("clear")
     print(
 
 """
