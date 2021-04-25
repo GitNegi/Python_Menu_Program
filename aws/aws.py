@@ -1,6 +1,4 @@
-import os
-import ec2
-import subprocess as sp
+import os, ec2, s3, subprocess as sp
 
 def chng2num(x,y,z):
         while not(x.isnumeric() and int(x) in range(y,z)):
