@@ -19,10 +19,10 @@ def aws_ec2():
 2. Create security group
 3. Provision the instance
 4. Show running instances
-5. Stop instances
+5. Stop instance
 6. Terminate instance
 7. Get public IP
-8. Create a Volume
+8. Create a volume
 9. Attach volume
 10. Go Back
 
@@ -37,7 +37,7 @@ Enter your Choice
         elif aws == 2:
             ec2.create_sg(input("Enter the name of the security group: "))
         elif aws == 3:
-            ec2.create_instance()
+            ec2.create_instance(input("Enter name of key: "), input("Enter name of security group: "))
         elif aws == 4:
             ec2.show_instances()
         elif aws == 5:
@@ -52,6 +52,27 @@ Enter your Choice
             ec2.ebs_volume(input("Volume ID: "), input("Instance ID: "), input("Device: /dev/"))
         else:
             break
+
+def aws_s3():
+    while True:
+        os.system("clear")
+        aws_svc = input("""
+-------Amazon Web Services--------
+
+1. Upload file to bucket
+2. Go Back
+
+Enter your Choice
+
+----------------------------------
+
+[aws]$ """)
+        aws_svc = chng2num(aws_svc,1,4)
+        if aws_svc == 1:
+            s3.upload_s3(input("Path to file: "), input("File name after uploading: "))
+        else:
+            return
+
 
 def aws_configure():
     while True:
@@ -73,10 +94,8 @@ Enter your Choice
             os.system("pip3 install awscli boto3")
         elif aws_svc == 2:
             os.system("aws configure")
-        elif aws_svc == 3:
-            break
-    return
-
+        else:
+            return
 
 def main_menu():
     while True:
@@ -87,26 +106,20 @@ def main_menu():
 1. Configure AWS
 2. Manage ec2 services
 3. Upload to s3
-4. Manage Images
-5. Manage Containers
-6. Go Back
+4. Go Back
 
 Enter your Choice
 
 ----------------------------------
 
 [aws]$ """)
-        x = chng2num(x,1,7)
+        x = chng2num(x,1,5)
         if x == 1:
             aws_configure()
         elif x == 2:
             aws_ec2()
         elif x == 3:
-            docker_login()
-        elif x == 4:
-            sp.getoutput("systemctl restart docker")
-        elif x == 5:
-            sp.getoutput("systemctl restart docker")
+            aws_s3()
         else:
             return
 
