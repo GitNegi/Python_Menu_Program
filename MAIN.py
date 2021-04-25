@@ -1,4 +1,4 @@
-import os, docker, lvm, hadoop
+import os, docker, lvm, hadoop as hd
 
 os.system("tput setaf 3")
 
