@@ -4,10 +4,10 @@ os.system("tput setaf 3")
 
 
 while(True):
+    os.system("clear")
     print("\t\t------->Technologies Integration<------")
     os.system("tput setaf 7")
     print("\n")
-    os.system("clear")
     print(
 
 """
