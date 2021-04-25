@@ -36,16 +36,9 @@ def show_instances():
 
 
 def create_instance(keyname, sg):
-    ec2_client = boto3.client("ec2", region_name="ap-south-1")
-    instances = ec2_client.run_instances(
-        ImageId="ami-0b0154d3d8011b0cd",
-        MinCount=1,
-        MaxCount=1,
-        InstanceType="t2.micro",
-        KeyName=keyname
-    )
+    os.system("aws ec2 run-instances --image-id ami-0e306788ff2473ccb --key-name {} --security-groups {} --instance-type t2.micro")
 
-    print("Instance", instances["Instances"][0]["InstanceId"], "created successfully.")
+    print("Instance created successfully.")
 
 def ebs_volume(x):
     os.system("aws ec2 create-volume --availability-zone ap-south-1 --size {}",format(int(x)))
@@ -53,7 +46,9 @@ def ebs_volume(x):
     print("Volume of size", x, "created successfully.")
 
 def attach_volume(volume, instance, device):
-    os.system("aws ec2 attach-volume --volume-id {} --instance-id {} --device {}")
+    os.system("aws ec2 attach-volume --volume-id {} --instance-id {} --device {}".format(volume, instance, "/dev/"+device))
+
+    print("Volume", volume, "attached to instance", instance, "successfully.")
 
 def get_public_ip(instance_id):
     ec2_client = boto3.client("ec2", region_name="us-west-2")
@@ -68,7 +63,11 @@ def stop_instance(instance_id):
     response = ec2_client.stop_instances(InstanceIds=[instance_id])
     print(response)
 
+    print("Instance stopped successfully.")
+
 def terminate_instance(instance_id):
     ec2_client = boto3.client("ec2", region_name="us-west-2")
     response = ec2_client.terminate_instances(InstanceIds=[instance_id])
     print(response)
+
+    print("Instance terminated successfully.")
