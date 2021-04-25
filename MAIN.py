@@ -15,9 +15,8 @@ while(True):
 \t\t\tPress 1: DOCKER
 \t\t\tPress 2: HADOOP
 \t\t\tPress 3: AWS
-\t\t\tPress 4: ANSIBLE
-\t\t\tPress 5: LVM
-\t\t\tPress 6: LINUX
+\t\t\tPress 4: LVM
+\t\t\tPress 5: LINUX
 
 """
 )
@@ -28,7 +27,7 @@ while(True):
     if choice==1:
         docker.main_menu()
     if choice ==2:
-        hadoop.HadoopStart()
+        hd.HadoopStart()
     if choice==5:
         lvm.main_loop()
     if choice == 6:
