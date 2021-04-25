@@ -36,10 +36,7 @@ Enter your Choice
             print(sp.getoutput("systemctl status docker | grep Active"))
             os.system("sleep 2")
         else:
-            return
-
-def docker_login():
-    pass
+            break
 
 def manage_images():
     while True:
@@ -68,6 +65,40 @@ Enter your Choice
             os.system("sleep 2")
         elif docker_img == 4:
             os.system("docker push {}:{}").format(input("Image Name: "),input("Image Tag: ")))
+        else:
+            break
+
+def manage_containers():
+    while True:
+        os.system("clear")
+        docker_ctnr = input("""
+--------------DOCKER--------------
+
+1. Launch a container
+2. View running containers
+3. View all containers
+4. Start a container
+5. Stop a container
+6. Go Back
+
+Enter your Choice
+
+----------------------------------
+
+[docker]$ """)
+        docker_ctnr = chng2num(docker_ctnr,1,6)
+        if docker_ctnr == 1:
+            os.system("docker run -dit --name {}  {}:{}".format(input("Container Name: "),input("Image Name: "),input("Image Tag: ")))
+        elif docker_ctnr == 2:
+            print(sp.getoutput("docker ps"))
+            os.system("clear")
+        elif docker_ctnr == 3:
+            print(sp.getoutput("docker ps -a"))
+            os.system("sleep 2")
+        elif docker_ctnr == 4:
+            os.system("docker start {}").format(input("Container Name: ")))
+        elif docker_ctnr == 5:
+            os.system("docker stop {}").format(input("Container Name: ")))
         else:
             break
 
@@ -101,6 +132,4 @@ Enter your Choice
             elif x == 5:
                 manage_containers()
             else:
-                return
-
-main_menu()
+                break
