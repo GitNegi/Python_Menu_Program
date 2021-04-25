@@ -30,6 +30,7 @@ while(True):
     if choice == 2:
         hd.HadoopStart()
     if choice ==3:
+        aws.main_menu()
     if choice == 4:
         lvm.main_loop()
     if choice == 5:
