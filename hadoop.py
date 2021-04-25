@@ -105,7 +105,7 @@ def HadoopStart():
 
 
 
-         if choice == 4:
+        if choice == 4:
             while True:
                 os.system("tput setaf 3")
                 print("\t\t --> DataNode <-- ")
@@ -127,7 +127,7 @@ def HadoopStart():
                     break
 
                 if dNchoice == 1:
-                    x = input(" Enter Folder Name with location")
+                    x = input(" Enter Folder Name with location :-> ")
                     os.system("mkdir x")
                     fs = open("hdfs-site.xml",'w+')
                     print(fs.write(
