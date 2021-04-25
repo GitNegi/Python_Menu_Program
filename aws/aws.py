@@ -37,7 +37,7 @@ Enter your Choice
             print(sp.getoutput("systemctl status docker | grep Active"))
             os.system("sleep 2")
         else:
-            return
+            break
 
 def aws_configure():
     while True:
