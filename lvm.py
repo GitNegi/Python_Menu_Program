@@ -77,7 +77,7 @@ Type the desired number:""")
             os.system("vgextend {} {}".format(input("\nEnter the name of volume group: "), input("\nEnter the location of all the physical volumes: ")))
             lvm_pause()
         elif x == "5":
-            main_loop()
+            break
         else:
             print("Enter a valid number")
             lvm_pause()
@@ -119,7 +119,7 @@ Type the desired number:""")
         elif x == "7":
             os.system("resize2fs {}".format("\nEnter the location of lvm: "))
         elif x == "8":
-            main_loop()
+            break
         else:
             print("Enter a valid number")
             lvm_pause()
