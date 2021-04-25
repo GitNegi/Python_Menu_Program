@@ -18,7 +18,7 @@ def aws_ec2():
 1. Create a key pair
 2. Create security group
 3. Provision the instance
-4. Show instances
+4. Show running instances
 5. Get public IP
 6. Create a Volume
 7. Go Back
