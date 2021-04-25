@@ -25,13 +25,12 @@ while(True):
 
     if choice==0:
          break
-    if choice==1:
+    if choice ==1:
         docker.main_menu()
-    if choice==2:
+    if choice == 2:
         hd.HadoopStart()
-    if choice==3:
-        aws.aws.main_menu()
-    if choice==4:
+    if choice ==3:
+    if choice == 4:
         lvm.main_loop()
-    if choice==5:
-        linux
+    if choice == 5:
+        linux.StartLinux()
